@@ -13,13 +13,18 @@ class User(db.Model, UserMixin):
     __table_args__ = {"schema":"comum"}
     
     id = db.Column('id_usuario_usu', db.Integer, autoincrement=True, primary_key=True)
+    nome = db.Column('txt_nome_usu', db.String(200), nullable=False, unique=True)
     email = db.Column('txt_email_usu', db.String(200), nullable=False, unique=True)
     cpf = db.Column('txt_cpf_usu', db.String(11), nullable=False, unique=True)
+    flgGoverno = db.Column('flg_governo_usu', db.Boolean)
+    flgAdmin = db.Column('flg_admin_usu', db.Boolean)
 
-    def __init__(self, name, email, cpf, password):
+    def __init__(self, nome, email, cpf, flgGoverno, flgAdmin):
+        self.nome = nome
         self.email = email
         self.cpf = cpf
-        self.password = generate_password_hash(password)
+        self.flgGoverno = flgGoverno
+        self.flgAdmin = flgAdmin
 
     def verify_password(self, pwd):
         return check_password_hash(self.password, pwd)

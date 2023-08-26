@@ -20,13 +20,15 @@ class loginController:
     def register():
 
         form = RegisterForm(request.form)
-
-        if request.method == 'POST' and form.validate(): 
-
+        print('ENTROU')
+        if request.method == 'POST': 
+            print('ENTROU POST')
             name = form.name.data
             email = form.email.data
             txtcpf = form.cpf.data
             pwd = form.password.data
+            isGoverno = form.isGoverno.data
+            isAdmin = form.isAdmin.data
 
             cpf = CPF()
             if not cpf.validate(txtcpf): 
@@ -35,25 +37,29 @@ class loginController:
 
             try:
                 
-                user = User(name, email, txtcpf, pwd)
+                user = User(name,email, txtcpf, isGoverno, isAdmin)
+                print(user)
                 db.session.add(user)
+                db.session.commit()
+                flash('Usuário cadastrado com sucesso!', 'sucess') 
+                return redirect(url_for('login.login')) 
+            
+                # url = 'http://10.82.85.8:8080/api/b2in/user/role'
+                # data = {'institution_external_id': institution_external_id, 'email': email, 'password': pwd, "application_external_id": app_key, "role_name": "URBANMOB_USER", 'type': 'USER'}
+                # headers = {'Content-Type': 'application/json'}
+                # response = requests.post(url, json=data, headers=headers)
+                # data = response.json() 
+                # #print(response.status_code)
+                # #print(response.json())
                 
-                url = 'http://10.82.85.8:8080/api/b2in/user/role'
-                data = {'institution_external_id': institution_external_id, 'email': email, 'password': pwd, "application_external_id": app_key, "role_name": "URBANMOB_USER", 'type': 'USER'}
-                headers = {'Content-Type': 'application/json'}
-                response = requests.post(url, json=data, headers=headers)
-                data = response.json() 
-                #print(response.status_code)
-                #print(response.json())
-                
-                if(response.status_code != 201):
-                    db.session.rollback()
-                    flash('Erro: {}'.format(response.status_code), 'error') 
-                    flash('Erro: {}. {}'.format(response.status_code, data['message']), 'error') 
-                    return render_template('login.html', form=form)
-                else:
-                    db.session.commit()
-                    return redirect(url_for('login.login')) 
+                # if(response.status_code != 201):
+                #     db.session.rollback()
+                #     flash('Erro: {}'.format(response.status_code), 'error') 
+                #     flash('Erro: {}. {}'.format(response.status_code, data['message']), 'error') 
+                #     return render_template('login.html', form=form)
+                # else:
+                #     db.session.commit()
+                #     return redirect(url_for('login.login')) 
             except Exception as e:
                 db.session.rollback()
                 flash('Erro: {}'.format(e), 'error')  
@@ -63,19 +69,21 @@ class loginController:
     def login():
 
         form = LoginForm(request.form)
+        email = form.email.data
+        
+        if request.method == 'POST' and form.validate(): 
+            user = User.query.filter_by(email=form.email.data).first()
 
-        # if request.method == 'POST' and form.validate(): 
-        #     user = User.query.filter_by(email=form.email.data).first()
-        #     if str(email).split('@')[0] == 'admin' :
-        #         session["roles"] = ['URBANMOB_ADMIN','URBANMOB_GOVERNO']
-        #     elif str(email).split('@')[0] == 'governo' :
-        #         session["roles"] = ['URBANMOB_GOVERNO']
-        #     elif str(email).split('@')[0] == 'usuario' :
-        #         session["roles"] = ['URBANMOB_USER']
-        #     login_user(user)
-        #     return redirect(url_for('evento.home'))  
-        # else:
-        #      return render_template('login.html', form=form)
+            if user.flgAdmin:
+                session["roles"] = ['URBANMOB_ADMIN','URBANMOB_GOVERNO']
+            elif user.flgGoverno :
+                session["roles"] = ['URBANMOB_GOVERNO']
+            else:
+                session["roles"] = ['URBANMOB_USER']
+            login_user(user)
+            return redirect(url_for('evento.home'))  
+        else:
+             return render_template('login.html', form=form)
         #-------------------------------------------------------
 
         if request.method == 'POST' and form.validate(): 

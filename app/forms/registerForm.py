@@ -56,16 +56,8 @@ class RegisterForm(Form):
         EqualTo('password', message='As senhas devem ser iguais')
     ])
 
-    accept_tos = BooleanField('Você aceita os termos de serviço?', 
-    default=True, render_kw ={'checked':''},
-    validators = [
-        DataRequired(message='*Campo Requerido'),
-    ])
+    isGoverno = BooleanField('Perfil Governo?')
 
-    newsletters = BooleanField('Deseja receber as nossas Newsletters?', 
-    default=True, render_kw ={'checked':''},
-    validators = [
-        DataRequired(message='*Campo Requerido'),
-    ])   
+    isAdmin = BooleanField('Perfim Admin?')
 
     submit = SubmitField('Cadastrar')
