@@ -6,4 +6,3 @@ app/user/__pycache__
 app/blueprint/__pycache__
 app/controllers/__pycache__
 app/models/__pycache__
-app/database.py
