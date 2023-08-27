@@ -3,23 +3,11 @@
 
 <div class="container-fluid">
     <div class="row">
-        <section class="col-md-3 col-lg-3 painel_esquerdo_gov">
-            <div class="titulo_identificacao_logado">
-
-                <div class="urban-gov-menu-gov">
-                    {% if current_user.is_authenticated %}
-                    <a href="/"><i class="bi bi-person-circle "></i></a>
-                    <span class="titulo-menu-gov">{{ current_user.name }}</span>
-                    {% endif %}
-                </div>
-                <div class="urban-gov-menu-gov" id="div-iden-cargo">
-                    <span class="ident-cargo"> GESTOR - NÍVEL 1</span>
-                    <i class="bi bi-check2-square"></i>
-                </div>
-
-            </div>
+        <section class="painel_esquerdo_gov">
+      
             {% include 'includeLinksEsquerda.html' %}
-        </section>
+      
+          </section>
 
         <div class="col-md-9 col-lg-9 container-fluid">
 
@@ -74,7 +62,7 @@
                             </div>
 
                             <div class="col-6 m-1 buttons-relatorios">
-                                <button type="submit" class="btn btn-primary btn-sm m-1"> <i class="bi bi-download"></i> Exportar </button>
+                                <button type="submit" class="btn btn-secondary btn-sm m-1"> <i class="bi bi-download"></i> Exportar </button>
                                 <button type="button" class="btn btn-danger btn-sm m-1"
                                         onclick="window.location.href='{{url_for('evento.home')}}';"><i class="bi bi-arrow-left-circle"></i>Voltar
                                 </button>

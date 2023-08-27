@@ -14,11 +14,12 @@
   flex-direction: column;
   justify-content: space-between;
   width: 20%;
-  background-image: url('../img/barra_lateral.png');
-  max-height: 850px;
-  min-height: 550px;
+  background-color: gray;
+  max-width: 20%;
+  max-height: 100%;
+  min-height: 94vh;
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; 
 
 }
 

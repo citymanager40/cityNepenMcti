@@ -3,7 +3,7 @@
 
 {% include 'include.html' %}
 
-<body>
+<body style="background-color: rgba(81, 81, 81, 0.9)">
     <div class="container col-11 col-md-9" id="form-container">
         <div class="row gx-5">
             <div class="col-md-6">
@@ -99,7 +99,7 @@
                     <div class="col-12">
                         <img src="static/img/login_image.svg" alt="Olá, novo usuário!" class="img-fluid">
                     </div>
-                    <div class="col-12" id="link-container">
+                    <div class="col-12 mt-2" id="link-container">
                         <a href="{{url_for('login.login')}}">Eu já tenho uma conta</a>
                     </div>
                 </div>

@@ -4,21 +4,7 @@
 <div class="container-fluid urban_gov_principal">
   <div class="row">
     <section class="painel_esquerdo_gov">
-      <div class="titulo_identificacao_logado">
-
-        <div class="urban-gov-menu-gov">
-          {% if current_user.is_authenticated %}
-          <a href="/"><i class="bi bi-person-circle "></i></a>
-          <span class="titulo-menu-gov">{{ current_user.name }}</span>
-          {% endif %}
-        </div>
-        <div class="urban-gov-menu-gov" id="div-iden-cargo">
-          <span class="ident-cargo"> GESTOR - NÍVEL 1</span>
-          <i class="bi bi-check2-square"></i>
-        </div>
-
-      </div>
-
+      
       <div class="card mb-4 align-self-center">
         <div class="card-body">
           <h7 class="card-title">Demandas Totais</h7>
@@ -59,9 +45,9 @@
           <div class="pesquisa_demanda_form">
             <input type="text" id="numOcorrencia" name="numOcorrencia" class="form-control"
               placeholder="Número da Ocorrência" />
-            <button type="submit" class="btn btn-primary bg-primary btn_pesquisa_demanda"><i class="bi bi-search icone-pesquisa-demanda-sm"></i>
+            <button type="submit" class="btn btn-secondary btn_pesquisa_demanda"><i class="bi bi-search icone-pesquisa-demanda-sm"></i>
               Pesquisar</button>
-            <button class="btn btn-primary btn-lista-demandas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-card-list"></i>Demandas</button>
+            <button class="btn btn-secondary btn-lista-demandas" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi bi-card-list"></i>Demandas</button>
           </div>
 
         </form>
@@ -120,7 +106,7 @@
               </div>
             </div>
             <div class="button-visualiza-demanda-off-canvas">
-              <button type="button" class="btn mb-2 btn-primary btn-sm"
+              <button type="button" class="btn btn-secondary btn-sm mb-2"
                 onclick="window.location.href='{{url_for('evento.selecionarEvento', num_ocorrencia=eventoHistorico.evento.numOcorrencia)}}';"><i class="bi bi-search icone-pesquisa-demanda-sm"></i>
                 Selecionar
               </button>
