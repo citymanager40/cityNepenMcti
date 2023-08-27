@@ -1,20 +1,28 @@
+-- OBS: Primeiro cria o banco com o script CREATE DATABASE citymanager abaixo... 
+
+-- Criando banco de dados
+CREATE DATABASE citymanager;
+
+-- depois se conecta nele e depois executa os scripts abaixo...
+
 -- ################
 -- #    SCHEMA    #
 -- ################
 
 CREATE SCHEMA mob;
 
+CREATE SCHEMA comum;
+
 -- ################
 -- #  SEQUENCES   #
 -- ################
 
--- CREATE SEQUENCE mob.usuario_seq
---   INCREMENT 1
---   MINVALUE 1
---   MAXVALUE 9223372036854775807
---   START 1
---   CACHE 1;
-
+CREATE SEQUENCE comum.usuario_seq
+  INCREMENT 1
+  MINVALUE 1
+  MAXVALUE 9223372036854775807
+  START 1
+  CACHE 1;
 
 CREATE SEQUENCE mob.categoria_seq
   INCREMENT 1
@@ -63,13 +71,13 @@ CREATE SEQUENCE mob.categoria_seq
 -- #    TABLES    #
 -- ################
 
--- CREATE TABLE mob.tb_usuario_usu (
--- 	id_usuario_usu integer NOT NULL DEFAULT nextval('mob.usuario_seq'::regclass),
--- 	txt_nome_usu varchar(200) NOT NULL,
--- 	txt_email_usu varchar(200) NOT NULL,
---   txt_cpf_usu varchar(11) NOT NULL,
--- 	CONSTRAINT usuario_pkey PRIMARY KEY (id_usuario_usu)
--- );
+CREATE TABLE comum.tb_usuario_usu (
+	id_usuario_usu integer NOT NULL DEFAULT nextval('comum.usuario_seq'::regclass),
+	txt_nome_usu varchar(200) NOT NULL,
+	txt_email_usu varchar(200) NOT NULL,
+  txt_cpf_usu varchar(11) NOT NULL,
+	CONSTRAINT usuario_pkey PRIMARY KEY (id_usuario_usu)
+);
 
 CREATE TABLE mob.tb_categoria_cat (
 	id_categoria_cat integer NOT NULL DEFAULT nextval('mob.categoria_seq'::regclass),
@@ -164,3 +172,7 @@ INSERT INTO mob.tb_subcategoria_sub(id_categoria_sub, txt_subcategoria_sub, dat_
 INSERT INTO mob.tb_status_evento_sev (txt_status_evento_sev, dat_inicio_sev, dat_fim_sev) VALUES('Aguardando Atendimento', now(), null);
 INSERT INTO mob.tb_status_evento_sev (txt_status_evento_sev, dat_inicio_sev, dat_fim_sev) VALUES('Em andamento', now(), null);
 INSERT INTO mob.tb_status_evento_sev (txt_status_evento_sev, dat_inicio_sev, dat_fim_sev) VALUES('Finalizado', now(), null);
+
+ALTER TABLE comum.tb_usuario_usu ADD flg_governo_usu boolean NULL DEFAULT false;
+ALTER TABLE comum.tb_usuario_usu ADD flg_admin_usu boolean NULL DEFAULT false;
+
