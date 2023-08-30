@@ -22,7 +22,7 @@ Arquivos a serem testados:
 - eventoController.py
 - loginController.py
 - eventoSearchController.py
-- elatorioController.py
+- relatorioController.py
 
 Objetivo: Testar métodos e funções que lidam com a lógica de negócio e a interação com os modelos.
 
@@ -46,7 +46,7 @@ Arquivos a serem testados:
 
 - eventoForm.py
 - loginForm.py
-- egisterForm.py
+- registerForm.py
 
 Objetivo: Validar a lógica de validação e outras funcionalidades presentes nos formulários.
 
@@ -57,7 +57,7 @@ Arquivos a serem testados:
 - eventoRout.py
 - eventoSearchRout.py
 - loginRout.py
-- elatorioRout.py
+- relatorioRout.py
 
 Objetivo: Testar qualquer código adicional em utilidades e rotas que seja crítico para a lógica do negócio.
 
@@ -73,7 +73,7 @@ Objetivo: Compreender e validar as constantes usadas ao longo do projeto.
 
 Arquivos a serem testados:
 
-- elatorio.py
+- relatorio.py
 
 Objetivo: Verificar como os relatórios são gerados e se atendem às especificações.
 
