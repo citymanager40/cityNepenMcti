@@ -108,7 +108,7 @@ Incorpore registros e monitoramento desde o início. Use [Serviço de Monitorame
 
 **Autor**: [Marcos Aires]  
 **Cargo**: Arquiteto de Solução Sênior  
-**Data**: [2023.03]  
+**Data Criação**: [2023.03]  
 **Versão**: 1.0
 
 ---
