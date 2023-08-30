@@ -40,15 +40,20 @@ Este documento destina-se a ser a pedra angular da arquitetura para o projeto ci
 
 Siga a estrutura de pastas e arquivos do repositório conforme comprometido. Desvios necessitam de razões justificáveis.
 
-  cityNepenMcti
-  ├── app
-  │ ├── controller
-  │ ├── database.py
-  │ └── ...
-  ├── Documentação
-  │ └── Arquitetura
-  │ └── README.md
-  └── ...
+<pre>
+```plaintext
+cityNepenMcti
+├── app
+│   ├── controller
+│   ├── database.py
+│   └── ...
+├── Documentação
+│   └── Arquitetura
+│       └── README.md
+└── ...
+```
+</pre>
+
 
 
 ---
