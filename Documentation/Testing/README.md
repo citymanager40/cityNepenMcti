@@ -1,39 +1,53 @@
-# Documentação de Testes
+# Documento de Instalação e Teste de Banco de Dados - README.md
 
 ## Introdução
 
-Este documento fornece uma visão abrangente dos métodos e práticas de teste empregados neste projeto, garantindo que a qualidade e a estabilidade do sistema sejam mantidas em conformidade com os padrões estabelecidos.
+Este documento serve como um guia de instalação e configuração do banco de dados local para a realização de testes unitários e funcionais no projeto CityManager. A aplicação utiliza dois principais scripts SQL: `Script Comum.sql` e `Script.sql`, que descrevem a estrutura e os dados iniciais do banco de dados.
 
-## Metodologias de Teste
+---
 
-1. **Testes Unitários**: Focados em validar o comportamento de unidades isoladas de código.
-2. **Testes de Integração**: Avaliam a coesão entre diferentes partes do sistema.
-3. **Testes de Carga**: Certificam-se de que o sistema pode lidar com a demanda prevista.
+## Requisitos
 
-## Ferramentas Utilizadas
+- Sistema de Gerenciamento de Banco de Dados PostgreSQL instalado.
+- Ambiente de Desenvolvimento Integrado (IDE) como o VSCode para execução dos scripts.
+  
+---
 
-- JUnit para testes unitários.
-- Selenium para testes de interface.
-- Apache JMeter para testes de carga.
+## Instruções de Instalação
 
-## Execução de Testes
+### Passo 1: Clonar o Repositório
 
-Os testes são executados automaticamente durante a fase de integração contínua por meio de um pipeline CI/CD.
+Se você ainda não clonou o repositório, faça-o utilizando o VSCode ou qualquer outra ferramenta de sua preferência.
 
-### Comandos para Executar Testes Manualmente
+### Passo 2: Acessar o Sistema de Gerenciamento de Banco de Dados
 
-1. Testes Unitários: mvn test
-2. Testes de Integração: mvn verify
-3. Testes de Carga: jmeter -n -t [TestFile]
+Abra o PostgreSQL e acesse utilizando as credenciais apropriadas.
 
-## Relatórios de Teste
+### Passo 3: Execução de Scripts
 
-Após a execução dos testes, os relatórios são gerados e armazenados na pasta Reports.
+#### Script para Criação do Banco de Dados
 
-## Rastreabilidade
+Primeiramente, execute a instrução abaixo para criar o banco de dados.
 
-A rastreabilidade dos testes é mantida através de identificadores únicos que vinculam cada caso de teste aos requisitos correspondentes.
+```sql
+CREATE DATABASE citymanager;
+Conecte-se ao banco de dados criado.
+```
 
-## Suporte e Contato
+Script de Esquema e Tabelas
+Agora, no banco de dados citymanager, execute o script Script.sql inteiro. Este script criará esquemas, tabelas, sequências e relações.
 
-Para quaisquer dúvidas ou informações adicionais, por favor, consulte a documentação técnica ou entre em contato com a equipe de testes.
+Script de Dados de Teste
+Posteriormente, no mesmo banco de dados, execute o script Script Comum.sql. Este script inserirá dados iniciais nas tabelas para fins de testes.
+
+Execução de Testes
+Com o banco de dados devidamente configurado, você agora está pronto para executar as baterias de testes unitários e funcionais na aplicação.
+
+Testes unitários: Execute o comando correspondente em seu ambiente de desenvolvimento.
+Testes funcionais: Siga as diretrizes fornecidas pela documentação da aplicação ou pela equipe de desenvolvimento.
+Conclusão
+Este documento proporciona as etapas necessárias para a configuração do ambiente local de banco de dados para testes. É imprescindível a correta execução dessas etapas para garantir a eficácia dos testes unitários e funcionais.
+
+Para quaisquer dúvidas ou problemas enfrentados durante a instalação, por favor, consulte a equipe de desenvolvimento.
+
+Fim do documento.
