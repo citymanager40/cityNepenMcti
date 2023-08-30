@@ -9,7 +9,7 @@ O presente documento descreve o planejamento para a implementação de uma bater
 A estrutura de diretórios para os testes seguirá um padrão similar ao da aplicação para facilitar a correspondência entre os componentes da aplicação e seus respectivos testes. A estrutura será organizada sob a pasta pp/tests, subdividida em:
 
 - unit/ : para os testes unitários
-- unctional/ : para os testes funcionais (não abordados neste documento)
+- functional/ : para os testes funcionais (não abordados neste documento)
 
 ## Componentes para Teste
 
