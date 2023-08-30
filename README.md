@@ -1,4 +1,4 @@
-# README.md: Visão Geral da Arquitetura de cityNepenMcti
+## Visão Geral da Arquitetura de cityNepenMcti
 
 ## Objetivos do Projeto
 
@@ -63,17 +63,6 @@ O design arquitetural escolhido é altamente modular, utilizando Python para o d
 
 - Composto por modelos HTML que compõem a interface do usuário.
 
-## Conclusão
-
-O design arquitetural escolhido está substancialmente alinhado com os objetivos estipulados, otimizando para modularidade, escalabilidade e manutenção. Ele foi projetado especificamente para se conectar com sistemas legados para coleta de dados e apresenta uma abordagem direta para futuras adaptações e extensões.
-
-Para mais informações ou contribuições, consulte as diretrizes de contribuição ou entre em contato com o arquiteto sênior responsável por este repositório.
-
----
-Última atualização: 29 de março de 2023  
-Arquiteto Sênior: [Seu Nome]  
----
-
 ### Metodologia Ágil e Integração com o Plano de Trabalho
 
 A metodologia empregada segue três princípios fundamentais extraídos do "Manifesto para o desenvolvimento ágil de software" ou simplesmente Manifesto Ágil:
@@ -105,6 +94,12 @@ A metodologia empregada segue três princípios fundamentais extraídos do "Mani
 3. Disponibilização do sistema através de containers, com documentação completa para implementações futuras.
 
 Para consultas adicionais ou colaborações, favor referir-se às diretrizes de contribuição ou contatar o arquiteto sênior responsável.
+
+## Conclusão
+
+O design arquitetural escolhido está substancialmente alinhado com os objetivos estipulados, otimizando para modularidade, escalabilidade e manutenção. Ele foi projetado especificamente para se conectar com sistemas legados para coleta de dados e apresenta uma abordagem direta para futuras adaptações e extensões.
+
+Para mais informações ou contribuições, consulte as diretrizes de contribuição ou entre em contato com o arquiteto sênior responsável por este repositório.
 
 ---
 Última atualização: 29 de março de 2023  
