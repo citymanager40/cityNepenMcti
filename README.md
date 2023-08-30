@@ -1,6 +1,4 @@
-# CitySolicitationManagement Project (CSM)
-
- # README.md: Visão Geral da Arquitetura de cityNepenMcti
+# README.md: Visão Geral da Arquitetura de cityNepenMcti
 
 ## Objetivos do Projeto
 
