@@ -16,9 +16,11 @@ Este documento descreve os passos necessários para implantar o sistema no ambie
 
 Clone o repositório do projeto para o servidor de produção.
 
-\\\
+<pre>
+```
 git clone [URL do Repositório]
-\\\
+```
+</pre>
 
 ### 2. Configurar Variáveis de Ambiente
 
@@ -28,17 +30,18 @@ Configure todas as variáveis de ambiente necessárias conforme descrito na docu
 
 Execute os scripts SQL para preparar o banco de dados.
 
-\\\
+<pre>
 ./run-database-scripts.sh
-\\\
+</pre>
+
 
 ### 4. Iniciar Serviços via Docker
 
 Navegue até a pasta do projeto e execute o seguinte comando:
 
-\\\
+<pre>
 docker-compose up -d
-\\\
+</pre>
 
 Isso irá iniciar todos os serviços definidos no arquivo docker-compose.yml.
 
@@ -46,9 +49,9 @@ Isso irá iniciar todos os serviços definidos no arquivo docker-compose.yml.
 
 Após seguir os passos acima, o sistema deve estar funcionando conforme esperado. Para verificar, acesse:
 
-\\\
+<pre>
 http://[ENDEREÇO DO SERVIDOR]
-\\\
+</pre>
 
 ## Suporte
 
