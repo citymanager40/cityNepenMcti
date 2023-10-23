@@ -152,9 +152,3 @@ class eventoSearchController:
                     pdf.ln(th)
                
                 return Response(pdf.output(dest='S').encode('latin-1'), mimetype='application/pdf', headers={'Content-Disposition':'attachment;filename=relatorio.pdf'})
-
-
-
-
-
-        
