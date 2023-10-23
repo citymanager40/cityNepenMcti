@@ -20,13 +20,13 @@
 
             <div class="titulo-baixar-app-barra-lateral">
                 <span class="titulo-baixar-app-barra-lateral">Para uma experiência completa baixe nosso app:</span></a>
-              </div>
-              
-              <div class="footer_painel_esquerdo_geral mt-auto">
+            </div>
+
+            <div class="footer_painel_esquerdo_geral mt-auto">
                 <span class="titulo_footer_painel_esquerdo_geral">
-                  Política de Privacidade</span>
+                    Política de Privacidade</span>
                 <span class="titulo_footer_painel_esquerdo_geral"> Nepen | MCTI - Todos os direitos reservados </span>
-              </div>
+            </div>
 
         </section>
         <main class="col-md-12 col-lg-9 col-sm-12 col-xs-12">
@@ -47,23 +47,24 @@
                     {% for error in form.endereco.errors %}
                     <div class="important">
                         {{error}}
-                    </div> 
-                    <br>                 
+                    </div>
+                    <br>
                     {% endfor %}
-                    <button type="button" class="btn btn-secundary bg-dark btn_pesquisa_demanda mt-2" onclick="simpleGeocoding()"><i class="bi bi-search icone-pesquisa-demanda-sm"></i>
+                    <button type="button" class="btn btn-secundary bg-dark btn_pesquisa_demanda mt-2"
+                        onclick="simpleGeocoding()"><i class="bi bi-search icone-pesquisa-demanda-sm"></i>
                         Pesquisar
                     </button>
                     <!-- <button type="button" class="btn btn-primary btn-sm" onclick="simpleGeocoding()"><i class="bi bi-search"></i></button> -->
                     <div class="d-none">
-                    {{form.latitude.label(class_="form-label")}}
-                    {{form.latitude(class_="form-control")}}
+                        {{form.latitude.label(class_="form-label")}}
+                        {{form.latitude(class_="form-control")}}
 
-                    {{form.longitude.label(class_="form-label")}}
-                    {{form.longitude(class_="form-control")}}
+                        {{form.longitude.label(class_="form-label")}}
+                        {{form.longitude(class_="form-control")}}
                     </div>
                 </div>
                 <br>
-                    <div id="map" class="container"></div>
+                <div id="map" class="container"></div>
                 <br>
                 <div class="container">
                     {{form.categoria.label(class_="form-label")}}
@@ -83,15 +84,17 @@
                         {{form.file(class_="form-control")}}
                         {% for error in form.file.errors %}
                         <div class="important">
-g                            {{error}}
+                            g {{error}}
                         </div>
                         {% endfor %}
                     </div>
                 </div>
                 <div class="d-grid gap-2 d-md-flex mx-auto justify-content-md-end">
-                    <button type="submit" class="btn btn-secondary btn-sm "><i class="bi bi-pencil-square"></i>Publicar</button>
+                    <button type="submit" class="btn btn-secondary btn-sm "><i
+                            class="bi bi-pencil-square"></i>Publicar</button>
                     <button type="button" class="btn btn-danger btn-sm"
-                        onclick="window.location.href='{{url_for('evento.home')}}';"><i class="bi bi-arrow-left-circle"></i>Voltar
+                        onclick="window.location.href='{{url_for('evento.home')}}';"><i
+                            class="bi bi-arrow-left-circle"></i>Voltar
                     </button>
                 </div>
             </form>
@@ -100,7 +103,7 @@ g                            {{error}}
 </div>
 
 {% block scripts %}
-    <script src="{{url_for('static', filename='js/map.js')}}"></script>
+<script src="{{url_for('static', filename='js/map.js')}}"></script>
 {% endblock %}
 
 <script type="text/javascript">
@@ -115,7 +118,7 @@ g                            {{error}}
             });
             return false;
         });
-    }); 
+    });
 
 </script>
 
@@ -125,10 +128,10 @@ g                            {{error}}
     let elem = document.getElementById('endereco');
 
     elem.addEventListener("keydown", function (event) {
-    if ( event.which == 13 ) {
-        event.preventDefault();
-        simpleGeocoding();
-    }
+        if (event.which == 13) {
+            event.preventDefault();
+            simpleGeocoding();
+        }
     });
 </script>
 
