@@ -58,6 +58,6 @@ class RegisterForm(Form):
 
     isGoverno = BooleanField('Perfil Governo?')
 
-    isAdmin = BooleanField('Perfim Admin?')
+    isAdmin = BooleanField('Perfil Admin?')
 
     submit = SubmitField('Cadastrar')

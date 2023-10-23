@@ -16,13 +16,15 @@ class User(db.Model, UserMixin):
     nome = db.Column('txt_nome_usu', db.String(200), nullable=False, unique=True)
     email = db.Column('txt_email_usu', db.String(200), nullable=False, unique=True)
     cpf = db.Column('txt_cpf_usu', db.String(11), nullable=False, unique=True)
+    password = db.Column('txt_password_usu', db.String(128), nullable=False)
     flgGoverno = db.Column('flg_governo_usu', db.Boolean)
     flgAdmin = db.Column('flg_admin_usu', db.Boolean)
 
-    def __init__(self, nome, email, cpf, flgGoverno, flgAdmin):
+    def __init__(self, nome, email, cpf, password, flgGoverno, flgAdmin):
         self.nome = nome
         self.email = email
         self.cpf = cpf
+        self.password = generate_password_hash(password)
         self.flgGoverno = flgGoverno
         self.flgAdmin = flgAdmin
 
