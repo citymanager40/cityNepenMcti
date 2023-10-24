@@ -1,0 +1,89 @@
+{
+	"info": {
+		"_postman_id": "ff45deff-830b-4536-8506-2dafecdb6a24",
+		"name": "CityManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "29042824"
+	},
+	"item": [
+		{
+			"name": "localhost:5000/consultarEvento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"numOcorrencia\": \"20234268152055\"\r\n}\r\n"
+				},
+				"url": "localhost:5000/consultarEvento"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/registrarUsuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nome\": \"Json Da Silva\",\r\n    \"email\": \"json@gmail.com\",\r\n    \"cpf\": \"69765362056\",\r\n    \"senha\": \"55555555\",\r\n    \"senha_confirmar\": \"55555555\",\r\n    \"flg_admin\": \"True\",\r\n    \"flg_governo\": \"False\"\r\n}\r\n"
+				},
+				"url": "localhost:5000/registrarUsuario"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/categorias",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "localhost:5000/categorias"
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/subcategoria",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idCategoria\": \"3\"\r\n}\r\n"
+				},
+				"url": "localhost:5000/subcategoria"
+			},
+			"response": []
+		}
+	]
+}

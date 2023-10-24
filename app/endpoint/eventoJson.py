@@ -1,6 +1,5 @@
 from flask_login import login_required
 from flask import jsonify, request
-from app.models.categoriaModel import Categoria
 from ..models.eventoModel import Evento
 from app.models.eventoHistoricoModel import EventoHistorico
 from ..rotas.eventoJsonRout import eventoJson_bp
