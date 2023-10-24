@@ -1,4 +1,4 @@
-from marshmallow import Schema, fields, pre_dump
+from marshmallow import fields
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 from app.models.eventoModel import Evento
 import base64

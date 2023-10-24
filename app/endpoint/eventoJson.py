@@ -15,22 +15,12 @@ class eventoJson():
         data = request.get_json()
 
         if 'numOcorrencia' not in data:
-            return jsonify({"error": "Campo 'numOcorrencia' ausente no JSON"}), 400
+            return jsonify({"Status": "Campo 'numOcorrencia' ausente no JSON"}), 400
 
         numOcorrencia = data['numOcorrencia']
         eventoHistorico = EventoHistorico.query.filter(and_(EventoHistorico.dataFim.is_(None), EventoHistorico.evento.has(Evento.numOcorrencia == numOcorrencia))).first()
 
         if eventoHistorico is None:
-            return jsonify({"error": "Ocorrência {} não encontrada".format(numOcorrencia)}), 404
+            return jsonify({"Status": "Ocorrência {} não encontrada".format(numOcorrencia)}), 404
 
         return evento_historico_schema.dump(eventoHistorico)
-
-        # return jsonify({"eventoHistorico": eventoHistorico}), 200
-
-
-    # @eventoJson_bp.route('/eventoJson', methods=['GET'])
-    # # @login_required
-    # def iniciar_json():
-    #     listCategoria = Categoria.query.filter(Categoria.dataFim.is_(None)).all()
-    #     categorias_json = [{"id": cat.id, "txtCategoria": cat.txtCategoria} for cat in listCategoria]
-    #     return jsonify({"listCategoria": categorias_json})
