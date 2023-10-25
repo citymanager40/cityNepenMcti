@@ -16,20 +16,16 @@ login_manager = LoginManager(app)
 login_manager.login_view = "login.login"
 login_manager.login_message = u"Por favor, realize o login para acessar a página"
 
-from .rotas.categoriaJsonRout import categoriaJson_bp
 from .rotas.loginRout import login_bp
 from .rotas.eventoRout import evento_bp
-from .rotas.eventoJsonRout import eventoJson_bp
 from .rotas.eventoSearchRout import evento_search_bp
-from .rotas.registerJsonRout import registerJson_bp
+from .rotas.jsonRout import json_bp
 from .rotas.relatorioRout import relatorio_bp
 
-app.register_blueprint(categoriaJson_bp)
 app.register_blueprint(public)
 app.register_blueprint(login_bp)
 app.register_blueprint(evento_bp)
-app.register_blueprint(eventoJson_bp)
+app.register_blueprint(json_bp)
 app.register_blueprint(evento_search_bp)
-app.register_blueprint(registerJson_bp)
 app.register_blueprint(relatorio_bp)
 # print(list(app.url_map.iter_rules()))
