@@ -2,7 +2,7 @@
 	"info": {
 		"_postman_id": "ff45deff-830b-4536-8506-2dafecdb6a24",
 		"name": "CityManager",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "29042824"
 	},
 	"item": [
@@ -21,7 +21,16 @@
 					"mode": "raw",
 					"raw": "{\r\n    \"numOcorrencia\": \"20234268152055\"\r\n}\r\n"
 				},
-				"url": "localhost:5000/consultarEvento"
+				"url": {
+					"raw": "localhost:5000/consultarEvento",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"consultarEvento"
+					]
+				}
 			},
 			"response": []
 		},
@@ -40,7 +49,16 @@
 					"mode": "raw",
 					"raw": "{\r\n    \"nome\": \"Json Da Silva\",\r\n    \"email\": \"json@gmail.com\",\r\n    \"cpf\": \"69765362056\",\r\n    \"senha\": \"55555555\",\r\n    \"senha_confirmar\": \"55555555\",\r\n    \"flg_admin\": \"True\",\r\n    \"flg_governo\": \"False\"\r\n}\r\n"
 				},
-				"url": "localhost:5000/registrarUsuario"
+				"url": {
+					"raw": "localhost:5000/registrarUsuario",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"registrarUsuario"
+					]
+				}
 			},
 			"response": []
 		},
@@ -62,7 +80,16 @@
 					"mode": "raw",
 					"raw": ""
 				},
-				"url": "localhost:5000/categorias"
+				"url": {
+					"raw": "localhost:5000/categorias",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"categorias"
+					]
+				}
 			},
 			"response": []
 		},
@@ -81,7 +108,84 @@
 					"mode": "raw",
 					"raw": "{\r\n    \"idCategoria\": \"3\"\r\n}\r\n"
 				},
-				"url": "localhost:5000/subcategoria"
+				"url": {
+					"raw": "localhost:5000/subcategoria",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"subcategoria"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/listarEventosPaginado",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/listarEventosPaginado?page=1",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"listarEventosPaginado"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/listarTodosEventos",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/listarTodosEventos",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"listarTodosEventos"
+					]
+				}
 			},
 			"response": []
 		}
