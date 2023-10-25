@@ -82,6 +82,15 @@ ul {
   background-size: cover;
   justify-content: center;
   background-attachment: fixed;
+  position: relative;
+}
+.government-logo {
+  width: 200px;
+  height: auto;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1; /* Coloca a imagem acima de outros elementos */
 }
 
 /* Footer */
