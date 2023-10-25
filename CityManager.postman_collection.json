@@ -35,6 +35,34 @@
 			"response": []
 		},
 		{
+			"name": "localhost:5000/logar",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"antonio@teste.com.br\",\r\n    \"pwd\": \"12345678\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "localhost:5000/logar",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"logar"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "localhost:5000/registrarUsuario",
 			"request": {
 				"method": "POST",

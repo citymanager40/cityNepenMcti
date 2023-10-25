@@ -1,4 +1,5 @@
 import ast
+import json
 from ..database import db
 from validate_docbr import CPF
 from flask import jsonify, request
@@ -13,10 +14,10 @@ from ..models.eventoModel import Evento
 from ..models.eventoHistoricoModel import EventoHistorico
 from ..models.userModel import User
 from ..models.statusEventoModel import StatusEvento
-from ..serializable import categoriaSchema, subcategoriaSchema, statusSchema, eventoHistoricoSchema
+from ..serializable import categoriaSchema, subcategoriaSchema, statusSchema, eventoHistoricoSchema, userSchema
 
 
-class json():
+class endpoint():
 
     global ROWS_PER_PAGE 
     ROWS_PER_PAGE = 5
@@ -114,6 +115,35 @@ class json():
         except Exception as e:
             return jsonify({"Status:" : str(e)}), 400 
 
+    @json_bp.route('/logar', methods=['POST'] )
+    def logar(): 
+
+        data = request.get_json()
+
+        try:
+            email = data['email']
+            pwd = data['pwd']
+
+            user = User.query.filter_by(email=email).first()
+
+            if not user or not user.verify_password(pwd):
+                return jsonify({"Status": "Usuário ou Senha inválidos"}), 401  
+
+            roles = []
+            if user.flgAdmin:
+                roles = ['URBANMOB_ADMIN','URBANMOB_GOVERNO']
+            elif user.flgGoverno :
+                roles = ['URBANMOB_GOVERNO']
+            else:
+                roles = ['URBANMOB_USER']
+
+            data = {"user": userSchema.user_schema.dump(user), "role":roles}
+
+            return data
+
+        except Exception as e:
+            return jsonify({"Status": str(e)}), 400 
+            
     @json_bp.route('/registrarUsuario', methods=["POST"])
     def registrarUsuario():
 
