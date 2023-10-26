@@ -117,7 +117,5 @@ class eventoSearchController:
         perAndamento = (contAndamento / contTotal ) * 100
         perAguardando = (contAguardando / contTotal ) * 100
 
-        print('xxxxxx', contFinalizada);
-
         return render_template('estatisticas.html', contTotal=contTotal, contFinalizada=contFinalizada, contAndamento=contAndamento, contAguardando=contAguardando,
         perTotal=round(perTotal,3), perFinalizada=round(perFinalizada,2), perAndamento=round(perAndamento,2), perAguardando=round(perAguardando,2))    

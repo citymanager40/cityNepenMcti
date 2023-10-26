@@ -1,9 +1,11 @@
 import ast
-import json
+import datetime
+import geocoder
+import base64
+
 from ..database import db
 from validate_docbr import CPF
 from flask import jsonify, request
-from flask_login import login_required
 from sqlalchemy import and_
 
 from ..rotas.jsonRout import json_bp
@@ -12,6 +14,7 @@ from ..models.categoriaModel import Categoria
 from ..models.subcategoriaModel import Subcategoria
 from ..models.eventoModel import Evento
 from ..models.eventoHistoricoModel import EventoHistorico
+from app.models.eventoObservacaoModel import EventoObservacao
 from ..models.userModel import User
 from ..models.statusEventoModel import StatusEvento
 from ..serializable import categoriaSchema, subcategoriaSchema, statusSchema, eventoHistoricoSchema, userSchema
@@ -22,8 +25,45 @@ class endpoint():
     global ROWS_PER_PAGE 
     ROWS_PER_PAGE = 5
 
+    @json_bp.route('/cadastrarEvento' , methods=['POST'])
+    def cadastrarEvento():
+
+        try:
+            data = request.get_json()
+
+            idSubcategoria = data['idSubcategoria']
+            idUsuario = data['idUsuario']
+            txtProblema = data['txtProblema']
+            txtEndereco = data['txtEndereco']
+            txtLat = data['txtLat']
+            txtLong = data['txtLong']
+            fileBase64 = data['fileBase64']
+            dataInicio = datetime.datetime.now()
+
+            if not txtLat and not txtLong:
+                g = geocoder.osm(txtEndereco)
+
+                if not g:
+                    return jsonify({"Status": "Endereço {} não encontrado".format(txtEndereco)}), 404
+
+                latlong = g.json
+                txtLat = latlong['lat']
+                txtLong = latlong['lng']
+
+            bytesFile = base64.b64decode(fileBase64)
+            numOcorrencia = str(dataInicio.year) + str(idUsuario) + str(dataInicio.day) + str(dataInicio.month) + str(dataInicio.hour) + str(dataInicio.minute) + str(dataInicio.second)
+
+            evento = Evento(idSubcategoria, idUsuario, numOcorrencia, txtProblema, txtEndereco, txtLat, txtLong, bytesFile, dataInicio)
+            eventoHistorico= EventoHistorico(evento, StatusEventoEnum.AGUARDANDO_ATENDIMENTO.value, idUsuario, dataInicio)
+
+            db.session.add(eventoHistorico)
+            db.session.commit()
+
+            return jsonify({"Status:": "Evento cadastrado com sucesso!"})
+        except Exception as e:
+            return jsonify({"Status:" : str(e)}), 400
+
     @json_bp.route('/consultarEvento', methods=["POST"])
-    # @login_required
     def consultarEvento():
         data = request.get_json()
 
@@ -38,8 +78,71 @@ class endpoint():
 
         return eventoHistoricoSchema.evento_historico_schema.dump(eventoHistorico)
     
+    @json_bp.route('/cadastrarObservacao/' , methods=['POST'])
+    def cadastrarObservacao():
+
+        data = request.get_json()
+
+        idEventoHistorico = data['idEventoHistorico']
+        idUsuario = data['idUsuario']
+        txtObservacao = data['txtObservacao']
+        dataInicio = datetime.datetime.now()
+
+        try:
+            eventoObservacao = EventoObservacao(idEventoHistorico, idUsuario, txtObservacao, dataInicio)
+            db.session.add(eventoObservacao)
+            db.session.commit()
+
+            return jsonify({"Status:": "Observação cadastrado com sucesso!"})
+        except Exception as e:
+            return jsonify({"Status:" : str(e)}), 400 
+
+    @json_bp.route('/atenderOcorrencia', methods=['GET'])
+    def atenderOcorrencia():
+
+        try:
+
+            numOcorrencia = request.args.get('numOcorrencia')
+            idUsuario = request.args.get('idUsuario')
+            dataInicio = datetime.datetime.now()
+
+            eventoHistorico = db.session.query(EventoHistorico).join(Evento).filter(and_(Evento.numOcorrencia == numOcorrencia, EventoHistorico.dataFim.is_(None))).first()
+            eventoHistorico.dataFim = dataInicio
+            
+            newEventoHistorico = EventoHistorico(eventoHistorico.evento, StatusEventoEnum.EM_ANDAMENTO.value, idUsuario, dataInicio)
+            db.session.add(newEventoHistorico)
+            db.session.commit()
+
+            return jsonify({"Status:": "Ocorrência em andamento!"})
+        except Exception as e:
+            db.session.rollback()
+            return jsonify({"Status:" : str(e)}), 400
+
+    @json_bp.route('/finalizarOcorrencia', methods=['GET'])
+    def finalizarOcorrencia():
+
+        try:
+            numOcorrencia = request.args.get('numOcorrencia')
+            idUsuario = request.args.get('idUsuario')
+            dataInicio = datetime.datetime.now()
+
+            eventoHistorico = db.session.query(EventoHistorico).join(Evento).filter(and_(Evento.numOcorrencia == numOcorrencia, EventoHistorico.dataFim.is_(None))).first()
+
+            if eventoHistorico.idStatusEvento != StatusEventoEnum.EM_ANDAMENTO.value:
+                return jsonify({"Status:": "Ocorrência {} não pode ser finalizada. Atenda a ocorrência".format(numOcorrencia)})
+
+            eventoHistorico.dataFim = dataInicio
+
+            newEventoHistorico= EventoHistorico(eventoHistorico.evento, StatusEventoEnum.FINALIZADO.value, idUsuario.id, dataInicio)
+            db.session.add(newEventoHistorico)
+            db.session.commit()
+
+            return jsonify({"Status:": "Ocorrência finalizada com sucesso!"})
+        except Exception as e:
+            db.session.rollback()
+            return jsonify({"Status:" : str(e)}), 400
+
     @json_bp.route('/listarEventosPaginado', methods=['GET'])
-    # @login_required
     def listarEventosPaginado():
 
         try:
@@ -59,7 +162,6 @@ class endpoint():
 
 
     @json_bp.route('/listarTodosEventos', methods=['GET'])
-    # @login_required
     def listarTodosEventos():
 
         try:
@@ -77,7 +179,6 @@ class endpoint():
             return jsonify({"Status:" : str(e)}), 400
         
     @json_bp.route('/categorias', methods=["GET"])
-    # @login_required
     def categorias():
 
         try:
@@ -93,16 +194,13 @@ class endpoint():
         except Exception as e:
             return jsonify({"Status:" : str(e)}), 400
         
-    @json_bp.route('/subcategoria', methods=["POST"])
-    # @login_required
+    @json_bp.route('/subcategoria', methods=["GET"])
     def subcategoria():
 
-        data = request.get_json()
+        idCategoria = request.args.get('idCategoria')
 
-        if 'idCategoria' not in data:
+        if not idCategoria:
             return jsonify({"Status": "Campo 'idCategoria' ausente no JSON"}), 400
-
-        idCategoria = data['idCategoria']
 
         try:
             subcategoria = Subcategoria.query.filter(and_(Subcategoria.dataFim.is_(None), Subcategoria.idCategoria == idCategoria)).first()
@@ -192,7 +290,6 @@ class endpoint():
             return jsonify({"Status:" : str(e)}), 400
 
     @json_bp.route('/status', methods=["GET"])
-    # @login_required
     def status():
 
         try:

@@ -35,6 +35,144 @@
 			"response": []
 		},
 		{
+			"name": "localhost:5000/cadastrarEvento",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idSubcategoria\" : \"1\",\r\n    \"idUsuario\" : \"7\",\r\n    \"txtProblema\" : \"Teste de Problema\",\r\n    \"txtEndereco\" : \"North Shopping Jóquei, 419, Avenida Lineu Machado, Jóquei Clube, Fortaleza, Região Geográfica Imediata de Fortaleza, Região Geográfica Intermediária de Fortaleza, Ceará, Região Nordeste, 60520-101, Brasil\",\r\n    \"txtLat\" : \"-3.764677\",\r\n    \"txtLong\" : \"-38.574489859143554\",\r\n    \"fileBase64\" : \"/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAIBAQEBAQIBAQECAgICAgQDAgICAgUEBAMEBgUGBgYFBgYGBwkIBgcJBwYGCAsICQoKCgoKBggLDAsKDAkKCgr/2wBDAQICAgICAgUDAwUKBwYHCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgr/wAARCAA5AJgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD8czqYtYTM4ztGRxxT5vEmjeSN9zbI3c+eB+laXgGysNZ8faJ4dvrqS3hvdRSOW4ixuReSSM8du9d/d654ivby4m8LzeGtD003Ei2uny+F4LiVEVioZpH5O7G72zivcwmU1MbDmiefXxkKErM8qGt2Dg7bhGGONpzmlTU7VhkFfxr006x46S42QeK9KX5MM6+F7Ta3Oc4KnH4VN/wkPxBUhW8e23sYfD1mmP8AyEa74cN4qTtp95yyzWEXseVzarCWCIpJI4Cxk/0qWKS5njz/AGfcYXoBbMf6V6h/wk3xDLlW+I6hRxhdCtwT+IUfyq9pnirW7W6jutc8S6nfRZw6xJDGAPpitanDOIcVZlwzGEzyEajLau0UunXMZZMHzLVhwfwqaCZZxmS2uuehjs3b+lelan4q8Z3GqGXTPiNqdjGoIyIYWOCf9pT24psvifxv5pST4x66+0ZLoYkx+ASnR4WxlSWhjUzaFN2seeppupPEZk02+aNujjTpAPzxS2nhDxLqisdK8N6ndbT83kafIcfXjivQ4Lr4lahoz+INP8aeJLqNb2K13i+AVnkOFH3cA+g4B9av3ln8X9J+3wX3xC8SWYsLpYbuH7Xt2yngK2FBB9v1rWXCmJW4QzaM3ax5afBnjeJzHL4K1ZWB6NYPUieBvHkrbk8EamR6/ZSK9FuvCni6OO5v5vF3iF/s8bSS51Vj90ZbNZCR3t1It1PrWsOCgYf8TOTofoaceEqzW50fX4nKv4Q+JQJgtvh7qkjj73+i8Y+tQWfhnx7eNs/4Q+53DqpUcGuxN9dOwgj1fVWjXjyjqT7fyz1ra8a+JtJ8R6TpMMPh4affWDFLqezuWX7XHj5dwB6jv610Q4acNGxfX4nnkngr4j/9CXN/47/jSL4I+JLnCeCLhj6KoP8AKuhmSd23Q390qnoDcN/jUbwTt8rX1w49GlJH6mj/AFdY/r8TJi+G3xIm+/4MvlPoIT/KpE+D3xPuWDR+D7objwJNqH8mINbvhqzt9QvX0y6nmWIx8lZmXbz2IPFdTpPwi+Huq3scL3sssxOT5upSZfHbOfwrixPD9Shq2ZVM0hCSVjx/xL4U8Q+EdSg0rxRp81jPcRGSGOcbd6g4OOx+lFavjmWa18NzW0t5cTw6V4umtrD7ZJ5kkUbQltqseSMnr+Bor52pTlCbR6UKkZxTKHgCIDx/pl60ZItfOl+jCFyD+eK7bQvAfxJ1a0S60rwdqt2k+TFPbWpaJ+egboTXP+GbrT4tejS1tmWRrafaSeeIXP8ASvrPVfBnjfVfhZ4Jv/DMl9FYL4ciJS3nMcXmHkkAdSe5r38lxcqUeVnl4+Dvc8Mh+BPx1ulSWw+F+u3RkUsu+NFAAODxnIq1p37Nf7R14rXUXwg1IqmQwYqOn4816/8AG2/8T/Db9lrVdVlimm1JLmJxePcuHhGMAEg84x0rxi0/4aw0j9ny2/aQ8JfH7V4LKGKNk02a7DJIQQpB3def4e9e+83jBaHBRoykSSfAj48STw2Fr8Kb/wA+fJiTeuWx1H1rbs/2S/2p9T037QnwnmEZbb+8uI1OR+Oc13njr4jeMPE37GkPxa0vxDeQa3LZBry6srgKWlXZvZd3CEHeMen514d/wpv4tWv7Lkf7VmjfG/xYnn6hJDPYLfSsu8dwwJCkntgVDz+Md1odCw9jq4/2WP2gryWa0PgJYmgxv825Ubs+n070+7/ZM+OOn7Jbjwpp86tyyjUkG32Y5716HZ+NvGOr/sPzfFDWdS1C31G100CVo5TueQgYYn3B5968v+Cf7OmpfG3w5aeO/EXxj1nTYNRjbfZRagxEqDgJyeCar+3pwV4mU8LG52Xhj4MftG6DoD+EdP8Ah9p7WN1eR3O2S4Rwk0ZBSTdn5cYrodf+BP7UGtaJqsmq/D7w3I+uX63eoXlx4gRDJIhBU8n5emT613nhn4fH4b/A/VfBXhvXb2+u7W1J066mlJkkAQLtJOct8vX3NfGviH9nz44D4MXnx08V+N9a09DqXlw2V5cSqrKevBIHA44rmef1p6sccNFH0HB8Df2i7mKaO7tfAkttqEbxSm21rzFi3Kch8dcjuPUVg+Hf2MPjPdWynTvFvhi8tdh2zQX2SpGSU99oHWqv7EnhfxH4e/Zq8c+KPE2u3n+lWRGm+YG/d4iOHUn2I6V1H/BPqG/m/ZV8V3mo6orXEdvdtbySy7pTv3KSB1zj2pwzuo2Z1sP7ujOYs/2IfjPd3zXGmeJvDMxGd32a43fngnFSL+xH8VbUPqd3448PwEH5lmlbYoHfNXv+CZk99deCvGsOoa89zLZ6sIoYrnO9VKkcEjnoePao/wBqbx94i+Mvxt8L/s1+DtXksbKNy3iG7t/Lg3Rpncu7OBhVJ5IzWrziajdGdPDtVLNi6V+xl8VdbHmab4n8MXduQSLy0vd0Zx1+nf8AKlg/Yp8di7kKfFbwY/lMM2i6qgkwTg5yeK9+8D6B4e+HPho6f4dht30m10xvLlyHFwm0/OSOpwOor5M/Zr+A/wCz78ZfAvi/4i/HDxXNZmLX2TRGi1XyWAeUghgWyRjp6VyQzzESnyo2VOMdz0fSf2JfiTHqLXOjeL/DZeM4cz3mVA/4DkVevP2Uvind50q68feGsI4Pm2tq2cf7Jx1r0L4V/Bf4YfBTRmtvhlcGa1vFVpZhqT3AkwoIJ3EhTjB49a6ayNxfT+RbRsXdgqKp5NPEYuriHqzCSp3PhT4w+CtT8Lajf/D24vjdPY+K1lkk2/fbyAS35Girf7T97cSfGTxDEkzAnxaYT8xX7lgm4fgf5UV8pWrP2rPoqFOMaSszjvBKC58WRTSHCwadfOxPYC2fNfoJ4E16W9/Z/wDANoYdjJ4dty8ZzyNvBr8/fABx4lm3fcGgamX/APAZh/WvpLUP2qPEvgDw7Y+DIfCMb/2NYabZx3Uq5EqtGnIBHGM16OCdonFmjalodR+3ZrFwn7L/AIih8lBHFeWYBxydzHOa+cPEXhj9o/xD+ynaeIYNP+w/Dy3XfAsuTJlWyzBQcYJAAr6A/wCCjMP2D9lO4nt1Zn1PV7NtqjPGCa+d9I/aW+IviL9nvTP2WfCfh3Wr67usxyTRWpkVkY5EaAAkHPJOOldPLFwuc+Du07n0H8cvFfhTXv8Agnlda/8AD9kNlFo9sryxrt/eEqjZwBgnFeI33hD9oab9luDVP+ExgX4ewTJdSeHIpseaVIyxI5znqRXrnxo8A3nwU/4Jv3nwkvraSTUJ5LVriKNGZkY7dwxgHg56ivHk+JvjvW/gJY/s2+GvhDrkl9PGyRX0du7R3EUuGHpsIbGc8Y5qY06bh7yOuzue0eOfHeg+N/2DNc8Q+EGubPS10yKNIdm1jMAp/XgZ71578Gv2NPEHxF8EaL8Sl+LV94TtLtI3is7KV2MbIQWcr9cHGOcYruvGvw71D4UfsA6j8Pbm1+3azJb2/wDoMWSVfCgkYGWZSOnevLPh7+1J8Wvh34Q0zwd4d+Fesa2tlGfNuL6JowS3UBQvr61E5x+BbGNTnctD7G0BLOz0oWFvJcXD2cIVJ0Qqk7L/AMtG3cgNyce9fLnxx+I3iv8Aa3+Punfs+eFNTdPC+l36tqzKG2q4Pz7gO3GBXp+i/Hbxn44/Zw8SeJf7BGieIRYSQWmmmJi7SGNThRjPcgH2rnP+CdXge+8O/DPW/HfjrSJ7bxBrWqqmbyLZI0CKSW+YAjLE1VONNmLjOKuz1b4yaZp/g74KeJLHw7Etvp+maEYLdAowR5WwHHqcZ/GvjX4SfBD4neM/hddfFXwx4un03R9OL+dGLx4hMVGWUY4J9q+xf2iku7z4D+LtP01HmmutNbyoIfnZyB0CjkmvLP2cvDPiHTf+Cfl54fvNDvI9Re4u5BYyWzCc5UgDyyN2T6Yqp0rIihNN+8U/2FdYtfDnwB8a+O7OBftCXU0zTEfM+yFmUH8a4r9mr9n2+/ah+G/if4seOPGIiuZYZZYGEjecHyzEAgjCnkY9DXp//BPr4VahP+zxrvhL4naZq+gwapNLF5lxYmObDQldyq/PU9xXmOkfDD9rf9l3Sdf8AeEvh7PrGi30skVrqUcvJibIB29mwc1lGM0/I6a0obxR6h/wT18TXHjb9mnXvBfiO4ZV0nXm07TZJZ2ciBlYlcsScAse9c34n/YB0vRvBmpa9qvxN0x47Kzke3tLSIkFC54YjjcB0I713v7M/wABb34bfs1yeDdW1uBfEGuGW5uxCxb7Izg4BYfxYPOO9eJy6F+2L8OPD2o/DDRfhzq95pl5BLFZ3d1N5iqhY/Pnryc4B9aWkZIXs+aNz1L/AIJw63qHij4Ra7p10uYLHV4o9Pd23MyrGFOfQYC17/ZRSaZcfaYxteOQMD6YNeT/ALJXwt1T9nL4R2PhTxPcWra7rGb+/htJdy2i4AEbN3fqTXqH9pxXUgtoJVlnm4jijOWYk+1dsJc2pwV6bgz4I+PVzcTfFrxC2ouWlXxVcSsSecm3iXt9aKp/tAXkF98WtavbaX93NrczZwR/AF/moor5qul7WR9LRS9kjmdC1WbT9YLpjbcWFzZuW4A81Auc+nrXrU/7SX7PwSzn+J/wE8YX/iK1iiS8u9F1n/QpiihVZEbgcAcetePWf/HwPrV+4/1A/wCuhpQq1I7MqrRp1fiR9E63/wAFMPh9r2kpodz+y5rup28KKLaDVbuJUBUYBJ+lM0L/AIKQeEfDoR/DH7J9zYSIm0SW9zEpTPUK3XrXzc/ekk+4PrW6xdZdTD2FOl8KPo+8/wCCll5qcjfaP2fo5IQcol9qSkj1yMHJz3qtN/wUl8Qx23kW37O1sgIKjytSiA254GevTFfOUnUfWnr3+tL61VNVSSPfof8AgpN4wCtAfgbZKh/56XsL4/E5qC4/4KKfE24j3aF8OfDlvF/H9pkkLZ9guBXz+/f/AHqkg+6PrUSrzZSoxZ7za/8ABQ74m7QLv4ZeGHkHBmVpoyeeOB/jV7/h4n8WriHyIvh54SiBGCzmZ8/Unmvn09Pxpo6/iKlYmoglQp22Pcn/AOCg/wASY5tqeBvCAb+J1S5FI/8AwUE+L04LabofhiFQx8x4VuTIG9cn+ea8Rl/1Y+tK3Vf9yuhYys47mKwlBPY9tP8AwUI+PVlm5i/sCZiuAbyK4bGfqetTaf8A8FIP2kksksvtXh3yowQAtpMCe/Jxz3rw22+41NH32pLE1V1NPY0z2fUf2/8A9oW/cG21XT7IFgS1nav/AFP49KksP+ChP7UFnA9pb/EdGRmyfO0pZGHGMAt0HtXilC/fH0qXWqSd2x+yiex3f7f37SoQQHxrYbSfmZvDETEn3I61k6t+2X8ftbAin8YRCIoRMlhpKWxkz3LDkEe3avNW6VF/Av8AvU44qrT0TIlh6UnqibUtSn1Ob7Rdr8+SSS2SSe5Pc0VWm6/jRXnVZyc2zZJRVkf/2Q==\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "localhost:5000/cadastrarEvento",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cadastrarEvento"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/cadastrarObservacao",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"idEventoHistorico\" : \"2\",\r\n    \"idUsuario\" : \"7\",\r\n    \"txtObservacao\" : \"Teste de Observação\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "localhost:5000/cadastrarObservacao",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"cadastrarObservacao"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/atenderOcorrencia",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/atenderOcorrencia?numOcorrencia=20234268152055&idUsuario=7",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"atenderOcorrencia"
+					],
+					"query": [
+						{
+							"key": "numOcorrencia",
+							"value": "20234268152055"
+						},
+						{
+							"key": "idUsuario",
+							"value": "7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "localhost:5000/finalizarOcorrencia",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "localhost:5000/finalizarOcorrencia?numOcorrencia=20234268152055&idUsuario=7",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"finalizarOcorrencia"
+					],
+					"query": [
+						{
+							"key": "numOcorrencia",
+							"value": "20234268152055"
+						},
+						{
+							"key": "idUsuario",
+							"value": "7"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "localhost:5000/logar",
 			"request": {
 				"method": "POST",
@@ -155,7 +293,7 @@
 		{
 			"name": "localhost:5000/subcategoria",
 			"request": {
-				"method": "POST",
+				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -163,18 +301,20 @@
 						"type": "text"
 					}
 				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\r\n    \"idCategoria\": \"3\"\r\n}\r\n"
-				},
 				"url": {
-					"raw": "localhost:5000/subcategoria",
+					"raw": "localhost:5000/subcategoria?idCategoria=3",
 					"host": [
 						"localhost"
 					],
 					"port": "5000",
 					"path": [
 						"subcategoria"
+					],
+					"query": [
+						{
+							"key": "idCategoria",
+							"value": "3"
+						}
 					]
 				}
 			},
