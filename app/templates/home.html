@@ -5,10 +5,6 @@
   <div class="row">
     <section class="col-md-3 col-lg-3 painel_esquerdo_geral">
 
-      <div class="titulo-baixar-app-barra-lateral">
-        <span class="titulo-baixar-app-barra-lateral">Para uma experiência completa baixe nosso app:</span></a>
-      </div>
-      
       <div class="footer_painel_esquerdo_geral mt-auto">
         <span class="titulo_footer_painel_esquerdo_geral">
           Política de Privacidade</span>
@@ -74,6 +70,7 @@
       {%endfor%}
 
       <!-- Pagination Links-->
+      {% if listHistoricoEvento.total > 1 %}
       <div class="paginacao">
         <div class="col m-0 d-grid gap-2 d-md-flex mx-auto justify-content-md-center">
           <a href="{{ url_for('evento.home', page=listHistoricoEvento.prev_num) }}" class="btn btn-outline-secondary 
@@ -104,7 +101,7 @@
           Página {{ listHistoricoEvento.page }} de {{ listHistoricoEvento.pages }}
         </p>
       </div>
-
+      {% endif %}
       <!-- End Pagination Links-->
 
     </main>
