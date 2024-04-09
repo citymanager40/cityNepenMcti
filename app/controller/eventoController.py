@@ -75,8 +75,8 @@ class eventoController():
         listOcorrencia = ['<b>Ocorrência:</b>: ' + row.evento.numOcorrencia + '<br>' + '<b>Status:</b>: ' + row.statusEvento.txtStatusEvento + '<br>' +'<b>Problema:</b> ' + row.evento.txtProblema for row in listHistoricoEvento]
         listStatus = [row.idStatusEvento for row in listHistoricoEvento]
 
-        map = folium.Map(location=[-9.648139, -35.717239],
-                        zoom_start=10)
+        map = folium.Map(location=[-4.261359779626374, -38.93294665701955],
+                        zoom_start=15)
 
         for lat, lon, ocorrencia, status in zip(listLat, listLong, listOcorrencia, listStatus):
             if status == 1:
